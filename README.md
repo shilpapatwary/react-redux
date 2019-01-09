@@ -1,46 +1,38 @@
 # Assignment - Week 9
 
-Submission date : 26th Dec
+Submission date : 16th Jan
 
 ## Part 1
-The objective is to revise writing Reducers.
-
-For the TodoList Application:
-
-1. Create a new trello app using the command `create-react-app todo --typescript`
-1. Write a TodoApp reducer, which supports the following operations within a board:
-  1. Add Item
-  1. Edit Item
-  1. Delete Item
-  1. Move Item
-  1. Mark Item as Complete
-  1. Mark Item as Incomplete
-1. Write at-least 1 positive test case for each action
-1. Reducer must be a pure function
-
-## Part 2
-The objective is to demonstrate redux implementation skills.
+The objective is to demonstrate implementation skills in React bindings with Redux.
 
 For the Trello Application:
 
-1. Create a new trello app using the command `create-react-app trello --typescript`
-1. Write a TrelloApp reducer, which support the following operations within a board:
-  1. Create, Edit and Move List and Card, and edit Board Name (State: `{currentBoard: {...}}`)
-  1. Edit Board Name (State: `{boardsList: []}`)
-1. Write at-least 1 positive and 1 negative test case for each action
-1. Reducer must be a pure function
+1. Copy all the components created as part of the `07-thinking-in-react` assignment into the `src/components` directory.
+1. Identify the container component(s) and create one if required.
+1. Use `connect()` from `react-redux` to bind Redux state to props, and dispatch to props.
+1. Integrate the functionality for the `Board` view, which was completed as part of `07-thinking-in-react` assignment:
+  1. Edit Board Name
+  1. Add, Edit and reposition Card
+  1. Add, Edit and reposition List
 
-## Part 3
+## Part 2
+The objective is to demonstrate design and implementation skills with Redux.
 
 For the Slack Application:
-
-1. Create a new slack app using the command `create-react-app slack --typescript`
-1. Write a SlackApp reducer, which support the following operations within a board:
-  1. Create Channel, Send Message, Change CurrentChannel, Edit Message, Delete Message (State: `{channelsList: [], curentChannel: []}`);
-1. Write at-least 1 positive and 1 negative test case for each action
+1. Copy all the components created as part of the `07-thinking-in-react` assignment into the `src/components` directory.
+1. Use `connect()` from `react-redux` to bind Redux state to props, and dispatch to props.
+1. Integrate the functionality for slack workspace view:
+  1. Change Current Channel
+  1. Select user for direct message
 
 # Setup
 1. Start by forking and cloning this repository into your account.
+1. Add your `08-redux` repository as a remote with the command: `git remote add 08-redux <insert-08-redux-repository-url-here>`
+1. `git remote -v` should display origin and 06-scalable-auth-with-docker
+1. Pull your `08-redux` changes into the master branch with the command: `git pull 08-redux master`. Now there will be merge conflict in README.md file.
+1. Update the `README.md` file to these instructions, and remove the instructions from `08-redux`.
+1. Copy the React components as created in the `07-thinking-in-react` repository, and place them in the `src/components` directory for both `slack` and `trello` projects respectively.
+1. Commit the changes. You are now ready to start working on this programming task.
 
 # Submission
 1. After completing the exercise/assignment, create a git tag by typing the command `git tag submission`
@@ -52,4 +44,4 @@ For the Slack Application:
 
 # Completion
 - Submission does not mean that the assignment is complete
-- Expect 2-5 Iterations before the assignment is accepted as Complete by a mentor
+- Expect 1-4 review-refactor-resubmit iterations before the assignment is accepted as Complete by a mentor.
