@@ -1,0 +1,24 @@
+.complete{
+  background-color: green;
+}
+.incomplete{
+  background-color: red;
+}
+.complete, .incomplete{
+  display: inline-block;
+  width: 20px;
+  height: 50px;
+}
+body{
+  margin:0;
+  padding:0;
+}
+.item{
+  height:50px;
+  line-height:50px;
+  margin:10px;
+  border:1px solid blue;
+  display:flex;
+  justify-content: space-between;
+  width:50%;
+}
