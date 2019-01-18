@@ -31,12 +31,33 @@ const SlackApplicationReducer: Reducer<WorkspaceState> = (currentState: Workspac
             return setChannelReducer(currentState, action);
          case SlackActionTypes.SUBMIT_MESSAGE:
               return submitMessageReducer(currentState, action);
+        case SlackActionTypes.START_USER_THREAD:
+            return startUserThreadAction(currentState, action);
         default:
             return currentState;
         
     }
 }
-
+function startUserThreadAction(currentState: WorkspaceState, action: AnyAction) {
+    if(currentState.workspaces !== undefined && currentState.currentWorkspace !== undefined){
+        const oldWorkspaceUsers = currentState.currentWorkspace.users;
+        const oldCurrentWorkspace = currentState.currentWorkspace;
+        const user = oldWorkspaceUsers.filter(u => u.name === action.payload.username)[0];
+        if(user){
+            const newUser = Object.assign({}, user, {chat: action.payload.chat});
+        const newUsers = oldWorkspaceUsers.map(u => u.id === user.id ? newUser : u);
+        const newWorkspace = Object.assign({}, currentState.currentWorkspace, {users: newUsers});
+        const newWorkspaces = currentState.workspaces.map(w => w.id === oldCurrentWorkspace.id ? newWorkspace : w);
+        return Object.assign({}, currentState, {currentWorkspace: newWorkspace, workspaces: newWorkspaces});
+        }else{
+            return currentState;
+        }
+        
+    }else{
+        return currentState;
+    }
+    
+}
 function setChannelReducer(currentState: WorkspaceState, action: AnyAction) {
     return Object.assign({}, currentState, {currentChannel: action.payload.channel});
 }

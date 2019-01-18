@@ -44,7 +44,7 @@ class Home  extends Component<any, HomeState> {
         showLists: store.getState().showLists
       })
     })
-  }
+  } 
 
     render() {
       return (

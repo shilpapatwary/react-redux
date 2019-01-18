@@ -3,10 +3,13 @@ import Workspace from './Workspace';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import {WorkspaceData} from '../store/SlackApp/types';
+import {WorkspaceData, WorkspaceState, UserData} from '../store/SlackApp/types';
+import {addUserWorkspaceAction, createWorkspaceAction, enterWorkspaceAction, editWorkspaceAction, deleteWorkspaceAction} from '../store/SlackApp/actions';
+import {connect} from 'react-redux';
+import { Dispatch } from 'redux';
 
 interface workspaceContainerProps{
-    workspaces: WorkspaceData[],
+    workspaces?: WorkspaceData[],
     addWorkspace: any,
     onAddUserToWorkspace: any,
     openWorkspace: any,
@@ -14,15 +17,13 @@ interface workspaceContainerProps{
     deleteWorkspace: any
 }
 interface workspaceContainerState{
-    workspaces: WorkspaceData[],
     showUserForm: boolean,
     selectedWorkspace: string
 }
-class workspaceContainer extends Component<workspaceContainerProps, workspaceContainerState> {
+export class workspaceContainer extends Component<workspaceContainerProps, workspaceContainerState> {
 constructor(props: workspaceContainerProps) {
     super(props);
     this.state = {
-        workspaces: props.workspaces,
         showUserForm: false,
         selectedWorkspace: ''
     }
@@ -57,7 +58,7 @@ addUserToWorkspace(event: React.MouseEvent<HTMLInputElement, MouseEvent>){
     this.setState({showUserForm: false});
 }
   render() {
-    return (
+    return this.props.workspaces ? (
         <section>
             <section id="workspaceHeader">
                 <AppBar  position="static" style= {{backgroundColor: 'inherit'}}>
@@ -71,7 +72,7 @@ addUserToWorkspace(event: React.MouseEvent<HTMLInputElement, MouseEvent>){
                         <section id="workspaces">
                                 <section id="workspaceContainer">
                                     <Grid container spacing={24} style={{padding: '24px 0 24px 0'}}>
-                                        { this.state.workspaces.map(workspace => (
+                                        { this.props.workspaces.map(workspace => (
                                             <Grid key={workspace.id} item xs={12} sm={12} lg={12} xl={12}>
                                             <Workspace workspace={workspace} key={workspace.id}  openWorkspace={this.props.openWorkspace} onWorkspaceTitleChange={this.props.onWorkspaceTitleChange} openAddUserForm={this.openAddUserForm} deleteWorkspace={this.props.deleteWorkspace}></Workspace>
                                             </Grid>
@@ -91,8 +92,22 @@ addUserToWorkspace(event: React.MouseEvent<HTMLInputElement, MouseEvent>){
        </section>
            } 
       </section>
-    );
+    ) : <div>Loading...</div>;
   }
 }
 
-export default workspaceContainer;
+const matchStateToProps = (state: WorkspaceState) => {
+    return{
+        workspaces: state.workspaces,
+    }
+}
+const matchDispatchToProps = (dispatch: Dispatch) => {
+    return {
+        addWorkspace: (workspace: WorkspaceData) => {dispatch(createWorkspaceAction(workspace))},
+        onAddUserToWorkspace: (wid: string, user: UserData) => {dispatch(addUserWorkspaceAction(wid, user))},
+        openWorkspace: (workspace: WorkspaceData) => {dispatch(enterWorkspaceAction(workspace))},
+        onWorkspaceTitleChange: (id: string, name: string) => {dispatch(editWorkspaceAction(id, name))},
+        deleteWorkspace: (wid: string) => {dispatch(deleteWorkspaceAction(wid))}
+    }
+}
+export default connect(matchStateToProps, matchDispatchToProps)(workspaceContainer);
