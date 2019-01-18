@@ -1,36 +1,48 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import {BoardData, BoardState} from '../store/TrelloApp/types';
+import {editBoardAction, deleteBoardAction, setBoardAction} from '../store/TrelloApp/actions';
+import { connect } from 'react-redux';
+import {Dispatch} from 'redux';
 
 interface BoardContainerProps{
-    boards: BoardData[],
+    boards?: BoardData[],
     setSelectedBoard: any,
     updateBoard: any,
     showSuccess: any,
     removeBoard: any
 }
 
-class BoardContainer  extends Component<BoardContainerProps, BoardState> {
+export class BoardContainer  extends Component<BoardContainerProps, any> {
     constructor(props: BoardContainerProps) {
         super(props);
-        this.state = {
-            boards: props.boards
-        }
     }
     render() {
-      return this.state.boards ? (
+      return this.props.boards ? (
         <section id="boards">
             <ul id="boardsContainer">
             {
-            this.state.boards.map(board => {
+            this.props.boards.map(board => {
                 return <Board board={board} key={board.id} 
                 showSuccess={this.props.showSuccess} onBoardSelect={this.props.setSelectedBoard} onBoardUpdate={this.props.updateBoard} removeBoard={this.props.removeBoard}/>
             })
             }  
             </ul>
         </section>
-      ) : <h1>Loading</h1>;
+      ) : <h1>Loading....</h1>;
     }
   }
-  
-  export default BoardContainer;
+
+  const mapStateToProps = (state: BoardState) => {
+    return {
+        boards: state.boards
+    }
+  }
+  const mapDispatchToProps = (dispatch:Dispatch) => {
+    return{
+        updateBoard:  (id: string, name: string) => {dispatch(editBoardAction(id, name))},
+        removeBoard: (boardId: string) => {dispatch(deleteBoardAction(boardId))},
+        setSelectedBoard: (board: BoardData) => {dispatch(setBoardAction(board))}
+    }
+  }
+  export default connect (mapStateToProps, mapDispatchToProps) (BoardContainer);

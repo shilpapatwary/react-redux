@@ -27,8 +27,8 @@ class Home extends Component<HomeProps, HomeState> {
   constructor(props: HomeProps) {
     super(props);
     this.state = {
-      workspaces: props.workspaces,
-      channels:props.channelsList,
+      workspaces: store.getState().workspaces,
+      channels:store.getState().channelsList,
       showWorkspaces: props.showWorkspaces,
       showChannels: props.showChannels,
       currentWorkspace:props.currentWorkspace,
