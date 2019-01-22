@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BoardContainer from './BoardContainer';
 import ListContainer from './ListContainer';
-import {BoardState, BoardData, CardData, ListData, TrelloActionTypes} from '../store/TrelloApp/types';
+import {BoardState, BoardData, CardData, ListData, TrelloActionTypes} from '../types';
 import { store } from '..';
 import { Provider } from 'react-redux';
 interface HomeState{ 

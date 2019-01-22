@@ -1,7 +1,7 @@
 import chai from 'chai';
 import store from '.';
-import {addBoardAction, editBoardAction, moveCardAction, moveListAction} from './TrelloApp/actions';
-import {ListData} from './TrelloApp/types';
+import {addBoardAction, editBoardAction, moveCardAction, moveListAction} from '../../actions';
+import {ListData} from '../../types';
 chai.should();
 describe('Trello Application store', function() {
   describe('store.dispatch(addBoardAction(""))', function() {

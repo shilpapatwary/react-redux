@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Board from './Board';
-import {BoardData, BoardState} from '../store/TrelloApp/types';
-import {editBoardAction, deleteBoardAction, setBoardAction} from '../store/TrelloApp/actions';
+import {BoardData, BoardState} from '../types';
+import {editBoardAction, deleteBoardAction, setBoardAction} from '../actions';
 import { connect } from 'react-redux';
 import {Dispatch} from 'redux';
 

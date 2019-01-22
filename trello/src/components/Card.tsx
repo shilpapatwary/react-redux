@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-class-members */
 import React, { Component } from 'react';
-import {CardData} from '../store/TrelloApp/types';
+import {CardData} from '../types';
 
 interface cardProps{
     card: CardData,

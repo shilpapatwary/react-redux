@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-class-members */
 import React, { Component } from 'react';
-import {BoardData} from '../store/TrelloApp/types';
+import {BoardData} from '../types';
 
  interface BoardProps{
     board: BoardData,

@@ -4,7 +4,7 @@ import './index.css';
 import Home from './components/Home';
 
 import initialState from './initialState.json';
-import TrelloApplicationReducer from './store/TrelloApp/reducer';
+import TrelloApplicationReducer from './reducers/TrelloReducer';
 import {createStore} from 'redux';
 
 export const store = createStore(TrelloApplicationReducer, initialState);

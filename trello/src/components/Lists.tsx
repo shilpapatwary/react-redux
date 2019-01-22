@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import List from './List';
-import {ListData} from '../store/TrelloApp/types';
+import {ListData} from '../types';
 
 interface ListsProps{
     lists: ListData[],
