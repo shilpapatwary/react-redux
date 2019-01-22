@@ -3,8 +3,8 @@ import Channel from './Channel';
 import MessageContainer from './MessageContainer';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
-import { ChannelData, WorkspaceState, WorkspaceData, MessageData } from '../store/SlackApp/types';
-import {showWorkspacesAction, addChannelAction, submitMessageAction, setChannelAction, startUserThreadAction} from '../store/SlackApp/actions';
+import { ChannelData, WorkspaceState, WorkspaceData, MessageData } from '../types';
+import {showWorkspacesAction, addChannelAction, submitMessageAction, setChannelAction, startUserThreadAction} from '../actions';
 import { connect } from 'react-redux';
 import {Dispatch} from 'redux';
 
@@ -149,7 +149,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         showWorkspaceContainer: () => {dispatch(showWorkspacesAction())},
         onAddChannel: (channel: ChannelData) => {dispatch(addChannelAction(channel))},
-        onMessageSent: (cid: string, message:MessageData) => {dispatch(submitMessageAction(cid, message))},
+        onMessageSent: (cid: string, message:string) => {dispatch(submitMessageAction(cid, message))},
         setCurrentChannel: (channel: ChannelData) => {dispatch(setChannelAction(channel))},
         startUserThread: (username: string, chat: boolean) => {dispatch(startUserThreadAction(username, chat))}
     }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { WorkspaceData } from '../store/SlackApp/types';
+import { WorkspaceData } from '../types';
 
 interface WorkspaceProps{
     workspace: WorkspaceData,

@@ -4,7 +4,7 @@ import './index.css';
 import Home from './components/Home';
 
 import initialState from './initialState.json';
-import SlackApplicationReducer from './store/SlackApp/reducer';
+import SlackApplicationReducer from './reducers/SlackReducer';
 import {createStore} from 'redux';
 
 export const store = createStore(SlackApplicationReducer, initialState);

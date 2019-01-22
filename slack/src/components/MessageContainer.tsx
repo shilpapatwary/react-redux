@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MessagesHistory from './MessagesHistory';
-import {ChannelData} from '../store/SlackApp/types';
+import {ChannelData} from '../types';
 
 interface MessageContainerProps{
   selectedChannel: ChannelData,

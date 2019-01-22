@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ChannelData} from '../store/SlackApp/types';
+import { ChannelData} from '../types';
 
 interface SendMessageProps{
     channel: ChannelData,

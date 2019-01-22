@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SendMessage from './SendMessage';
 import Message from './Message';
-import { ChannelData, MessageData } from '../store/SlackApp/types';
+import { ChannelData, MessageData } from '../types';
 
 interface MessageHistoryProps{
     channel: ChannelData,

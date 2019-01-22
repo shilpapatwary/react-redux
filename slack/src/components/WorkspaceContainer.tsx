@@ -3,8 +3,8 @@ import Workspace from './Workspace';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import {WorkspaceData, WorkspaceState, UserData} from '../store/SlackApp/types';
-import {addUserWorkspaceAction, createWorkspaceAction, enterWorkspaceAction, editWorkspaceAction, deleteWorkspaceAction} from '../store/SlackApp/actions';
+import {WorkspaceData, WorkspaceState, UserData} from '../types';
+import {addUserWorkspaceAction, createWorkspaceAction, enterWorkspaceAction, editWorkspaceAction, deleteWorkspaceAction} from '../actions';
 import {connect} from 'react-redux';
 import { Dispatch } from 'redux';
 

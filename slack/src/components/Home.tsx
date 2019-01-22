@@ -3,7 +3,7 @@ import '../Slack.css';
 import 'font-awesome/css/font-awesome.min.css';
 import WorkspaceContainer from '../components/WorkspaceContainer';
 import ChannelsContainer from '../components/ChannelsContainer';
-import {MessageData, WorkspaceData, UserData, ChannelData, SlackActionTypes} from '../store/SlackApp/types';
+import {MessageData, WorkspaceData, UserData, ChannelData, SlackActionTypes} from '../types';
 import { store } from '..';
 import {Provider} from 'react-redux';
 

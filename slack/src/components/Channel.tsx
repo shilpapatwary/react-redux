@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ChannelData, UserData } from '../store/SlackApp/types';
+import { ChannelData, UserData } from '../types';
 
 interface ChannelProps{
     channel: ChannelData,

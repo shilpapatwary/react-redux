@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MessageData } from '../store/SlackApp/types';
+import { MessageData } from '../types';
 
 interface MessageProps{
     message: MessageData
