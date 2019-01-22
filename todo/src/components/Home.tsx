@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ToDoList from './ToDoList';
-import { ItemState } from '../store/TodoApp/types';
-import {ItemData} from '../store/TodoApp/types';
+import { ItemState } from '../types';
+import {ItemData, TodoActionTypes} from '../types';
 import store from '..';
 
 interface ItemProps{
@@ -25,22 +25,22 @@ class Home  extends Component<ItemProps, ItemState> {
   }
 
   addItem(newItem: ItemData) {
-    store.dispatch({type:'ADD_ITEM', payload: newItem});
+    store.dispatch({type:TodoActionTypes.ADD_ITEM, payload: newItem});
   }
 
   removeItem(id: String) {
-    store.dispatch({type: 'REMOVE_ITEM', payload: {id}});
+    store.dispatch({type: TodoActionTypes.DELETE_ITEM, payload: {id}});
   }
 
   editItem(id: String, name: String) {
-    store.dispatch({type: 'EDIT_ITEM', payload: {id, name}});
+    store.dispatch({type: TodoActionTypes.EDIT_ITEM, payload: {id, name}});
   }
   updateItem(id: String, isComplete: boolean) {
-    isComplete ? store.dispatch({type: 'MARK_ITEM_AS_INCOMEPLETE', payload: {id}}) : store.dispatch({type: 'MARK_ITEM_AS_COMPLETE', payload: {id}});
+    isComplete ? store.dispatch({type: TodoActionTypes.MARK_ITEM_AS_INCOMPLETE, payload: {id}}) : store.dispatch({type: TodoActionTypes.MARK_ITEM_AS_COMPLETE, payload: {id}});
   }
 
   moveItem(id: String, index: number) {
-    store.dispatch({type: 'MOVE_ITEM', payload: {id, index}});
+    store.dispatch({type: TodoActionTypes.MOVE_ITEM, payload: {id, index}});
   }
   render() {
 

@@ -1,4 +1,4 @@
-import { ItemState } from "./types";
+import { ItemState, TodoActionTypes } from "../types";
 import { AnyAction } from "redux";
 
 const initialState={
@@ -8,17 +8,17 @@ const initialState={
 
 const TodoApplicationReducer = (currentState: ItemState = initialState, action: AnyAction) => {
     switch(action.type) {
-        case 'ADD_ITEM':
+        case TodoActionTypes.ADD_ITEM:
             return addItemReducer(currentState, action);
-        case 'REMOVE_ITEM':
+        case TodoActionTypes.DELETE_ITEM:
             return removeItemReducer(currentState, action);
-        case 'MARK_ITEM_AS_COMPLETE':
+        case TodoActionTypes.MARK_ITEM_AS_COMPLETE:
             return markItemAsComplete(currentState, action);
-        case 'MARK_ITEM_AS_INCOMEPLETE':
+        case TodoActionTypes.MARK_ITEM_AS_INCOMPLETE:
             return markItemAsInComplete(currentState, action);
-        case 'MOVE_ITEM':
+        case TodoActionTypes.MOVE_ITEM:
             return moveItemReducer(currentState, action);
-        case 'EDIT_ITEM':
+        case TodoActionTypes.EDIT_ITEM:
             return editItemReducer(currentState, action);
         default:
             return currentState;
@@ -70,7 +70,9 @@ function moveItemReducer(currentState: ItemState , action: AnyAction) {
     const leftItems = otherItems.slice(0, action.payload.index);
     const rightItems = otherItems.slice(action.payload.index);
     const newItems = [...leftItems, item, ...rightItems];
-    return Object.assign({}, currentState, {items: newItems, currentItem: undefined});
+    const newItemsWithUpdatedIndex = newItems.map((l, i) => {return {...l, index: i + 1}});
+    const newItem = newItemsWithUpdatedIndex.filter(i => i.id === action.payload.id)[0];
+    return Object.assign({}, currentState, {items: newItemsWithUpdatedIndex, currentItem: newItem});
 }
 
 export default TodoApplicationReducer;

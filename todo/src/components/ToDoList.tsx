@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Item from './Item';
-import {ItemData} from '../store/TodoApp/types';
+import {ItemData} from '../types';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';

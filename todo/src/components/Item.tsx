@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ItemData} from '../store/TodoApp/types';
+import {ItemData} from '../types';
 
 interface ItemProps {
   item: ItemData,

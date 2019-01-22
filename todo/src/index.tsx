@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './components/Home';
-import TodoApplicationReducer from './store/TodoApp/reducer'; 
+import TodoApplicationReducer from './reducers/reducer'; 
 import initialState from './initialState.json';
 import './index.css';
 import {createStore} from 'redux';
